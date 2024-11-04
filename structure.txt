@@ -1,0 +1,13 @@
+local/themeeditor/
+├── classes/
+│   └── form/
+│       └── theme_settings_form.php
+├── db/
+│   ├── access.php
+│   └── tasks.php
+├── lang/
+│   └── en/
+│       └── local_themeeditor.php
+├── settings.php
+├── version.php
+└── index.php
