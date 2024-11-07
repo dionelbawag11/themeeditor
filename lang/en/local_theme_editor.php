@@ -1,0 +1,23 @@
+<?php
+$string['pluginname'] = 'Theme Editor';
+$string['alertcontent'] = 'Alert Content';
+$string['contentsaved'] = 'Alert content saved successfully!';
+$string['contentrequired'] = 'Alert content is required!';
+$string['savechanges'] = 'Save changes';
+$string['generalsettings'] = 'General';
+$string['headersettings'] = 'Header';
+$string['footersettings'] = 'Footer';
+$string['frontpagesettings'] = 'Front Page';
+$string['frontpagebenefitsettings'] = 'Front Page Benefit';
+$string['frontpagefeaturedsettings'] = 'Front Page Featured';
+$string['frontpagepromosettings'] = 'Front Page Promo';
+$string['frontpagelogosettings'] = 'Front Page Logo';
+$string['frontpagecategorysettings'] = 'Front Page Category';
+$string['frontpagetestimonialsettings'] = 'Front Page Testimonial';
+$string['frontpagefaqsettings'] = 'Front Page FAQ';
+$string['frontpagectasectionsettings'] = 'Front Page CTA Section';
+$string['frontpageteachersettings'] = 'Front Page Teacher';
+$string['coursesetting'] = 'Course Settings';
+$string['socialmediasetting'] = 'Social Media';
+$string['loginpagesetting'] = 'Login Page';
+$string['advancesetting'] = 'Advanced Setting';
