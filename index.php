@@ -287,8 +287,8 @@ class ThemeSettingsManager
 
         ],
         'frontpagepromo' => [
-            'usepromocarousel' => '',
-            'carouselitemheight' => '',
+            'usepromocarousel' => 'Enable promo carousel section',
+            'carouselitemheight' => 'Carousel item height',
 
             'carouselitem1' => 'Title 1',
             'carouselitem1image' => 'Image 1',
@@ -350,30 +350,606 @@ class ThemeSettingsManager
             'carouselitem6videoswitcher' => 'Video type switcher 6',
             'carouselitem6videoid' => 'Video ID 6',
         ],
-        'frontpagelogo' => [],
-        'frontpagecategory' => [],
-        'frontpageteacher' => [],
-        'frontpagetestimonial' => [],
-        'frontpagefaq' => [],
-        'frontpagectasection' => [],
-        'coursesetting' => [],
-        'socialmedia' => [],
-        'loginpage' => [],
-        'advance' => [],
+        'frontpagelogo' => [
+            'uselogos' => 'Enable logos section',
+            'logossectiontitle' => 'Logos section title',
+
+            'logo1image' => 'Image 1',
+            'logo1alttext' => 'Alternative text 1',
+            'logo1url' => 'Logo link 1',
+
+            'logo2image' => 'Image 2',
+            'logo2alttext' => 'Alternative text 2',
+            'logo2url' => 'Logo link 2',
+
+            'logo3image' => 'Image 3',
+            'logo3alttext' => 'Alternative text 3',
+            'logo3url' => 'Logo link 3',
+
+            'logo4image' => 'Image 4',
+            'logo4alttext' => 'Alternative text 4',
+            'logo4url' => 'Logo link 4',
+
+            'logo5image' => 'Image 5',
+            'logo5alttext' => 'Alternative text 5',
+            'logo5url' => 'Logo link 5',
+
+            'logo6image' => 'Image 6',
+            'logo6alttext' => 'Alternative text 6',
+            'logo6url' => 'Logo link 6',
+        ],
+        'frontpagecategory' => [
+            'usecategories' => 'Enable categories section',
+            'categoriessectiontitle' => 'Categories section title',
+            'categoriesbuttontext' => 'CTA button text',
+            'categoriesbuttonurl' => 'CTA button link',
+            'categoriesbuttonurlopennew' => 'Open link in a new window/tab',
+
+            'category1title' => 'Title 1',
+            'category1image' => 'Image 1',
+            'category1content' => 'Content 1',
+            'category1url' => 'Target URL 1',
+
+            'category2title' => 'Title 2',
+            'category2image' => 'Image 2',
+            'category2content' => 'Content 2',
+            'category2url' => 'Target URL 2',
+
+            'category3title' => 'Title 3',
+            'category3image' => 'Image 3',
+            'category3content' => 'Content 3',
+            'category3url' => 'Target URL 3',
+
+            'category4title' => 'Title 4',
+            'category4image' => 'Image 4',
+            'category4content' => 'Content 4',
+            'category4url' => 'Target URL 4',
+
+            'category5title' => 'Title 5',
+            'category5image' => 'Image 5',
+            'category5content' => 'Content 5',
+            'category5url' => 'Target URL 5',
+
+            'category6title' => 'Title 6',
+            'category6image' => 'Image 6',
+            'category6content' => 'Content 6',
+            'category6url' => 'Target URL 6',
+
+            'category7title' => 'Title 7',
+            'category7image' => 'Image 7',
+            'category7content' => 'Content 7',
+            'category7url' => 'Target URL 7',
+
+            'category8title' => 'Title 8',
+            'category8image' => 'Image 8',
+            'category8content' => 'Content 8',
+            'category8url' => 'Target URL 8',
+
+            'category9title' => 'Title 9',
+            'category9image' => 'Image 9',
+            'category9content' => 'Content 9',
+            'category9url' => 'Target URL 9',
+
+            'category10title' => 'Title 10',
+            'category10image' => 'Image 10',
+            'category10content' => 'Content 10',
+            'category10url' => 'Target URL 10',
+
+            'category11title' => 'Title 11',
+            'category11image' => 'Image 11',
+            'category11content' => 'Content 11',
+            'category11url' => 'Target URL 11',
+
+            'category12title' => 'Title 12',
+            'category12image' => 'Image 12',
+            'category12content' => 'Content 12',
+            'category12url' => 'Target URL 12',
+
+            'category13title' => 'Title 13',
+            'category13image' => 'Image 13',
+            'category13content' => 'Content 13',
+            'category13url' => 'Target URL 13',
+
+            'category14title' => 'Title 14',
+            'category14image' => 'Image 14',
+            'category14content' => 'Content 14',
+            'category14url' => 'Target URL 14',
+
+            'category15title' => 'Title 15',
+            'category15image' => 'Image 15',
+            'category15content' => 'Content 15',
+            'category15url' => 'Target URL 15',
+
+            'category16title' => 'Title 16',
+            'category16image' => 'Image 16',
+            'category16content' => 'Content 16',
+            'category16url' => 'Target URL 16',
+
+            'category17title' => 'Title 17',
+            'category17image' => 'Image 17',
+            'category17content' => 'Content 17',
+            'category17url' => 'Target URL 17',
+
+            'category18title' => 'Title 18',
+            'category18image' => 'Image 18',
+            'category18content' => 'Content 18',
+            'category18url' => 'Target URL 18',
+
+            'category19title' => 'Title 19',
+            'category19image' => 'Image 19',
+            'category19content' => 'Content 19',
+            'category19url' => 'Target URL 19',
+
+            'category20title' => 'Title 20',
+            'category20image' => 'Image 20',
+            'category20content' => 'Content 20',
+            'category20url' => 'Target URL 20',
+
+        ],
+        'frontpageteacher' => [
+            'useteachers' => 'Enable teachers section',
+            'teachersectiontitle' => 'Teachers section title',
+            'teachersbuttontext' => 'CTA button text',
+            'teachersbuttonurl' => 'CTA button link',
+            'teachersbuttonurlopennew' => 'Open link in a new window/tab',
+            'teacher1image' => 'Image 1',
+            'teacher1name' => 'Name 1',
+            'teacher1meta' => 'Title 1',
+            'teacher1content' => 'Bio 1',
+
+            'teacher2image' => 'Image 2',
+            'teacher2name' => 'Name 2',
+            'teacher2meta' => 'Title 2',
+            'teacher2content' => 'Bio 2',
+
+            'teacher3image' => 'Image 3',
+            'teacher3name' => 'Name 3',
+            'teacher3meta' => 'Title 3',
+            'teacher3content' => 'Bio 3',
+
+            'teacher4image' => 'Image 4',
+            'teacher4name' => 'Name 4',
+            'teacher4meta' => 'Title 4',
+            'teacher4content' => 'Bio 4',
+
+            'teacher5image' => 'Image 5',
+            'teacher5name' => 'Name 5',
+            'teacher5meta' => 'Title 5',
+            'teacher5content' => 'Bio 5',
+
+            'teacher6image' => 'Image 6',
+            'teacher6name' => 'Name 6',
+            'teacher6meta' => 'Title 6',
+            'teacher6content' => 'Bio 6',
+
+            'teacher7image' => 'Image 7',
+            'teacher7name' => 'Name 7',
+            'teacher7meta' => 'Title 7',
+            'teacher7content' => 'Bio 7',
+
+            'teacher8image' => 'Image 8',
+            'teacher8name' => 'Name 8',
+            'teacher8meta' => 'Title 8',
+            'teacher8content' => 'Bio 8',
+
+            'teacher9image' => 'Image 9',
+            'teacher9name' => 'Name 9',
+            'teacher9meta' => 'Title 9',
+            'teacher9content' => 'Bio 9',
+
+            'teacher10image' => 'Image 10',
+            'teacher10name' => 'Name 10',
+            'teacher10meta' => 'Title 10',
+            'teacher10content' => 'Bio 10',
+
+            'teacher11image' => 'Image 11',
+            'teacher11name' => 'Name 11',
+            'teacher11meta' => 'Title 11',
+            'teacher11content' => 'Bio 11',
+
+            'teacher12image' => 'Image 12',
+            'teacher12name' => 'Name 12',
+            'teacher12meta' => 'Title 12',
+            'teacher12content' => 'Bio 12',
+
+            'teacher13image' => 'Image 13',
+            'teacher13name' => 'Name 13',
+            'teacher13meta' => 'Title 13',
+            'teacher13content' => 'Bio 13',
+
+            'teacher14image' => 'Image 14',
+            'teacher14name' => 'Name 14',
+            'teacher14meta' => 'Title 14',
+            'teacher14content' => 'Bio 14',
+
+            'teacher15image' => 'Image 15',
+            'teacher15name' => 'Name 15',
+            'teacher15meta' => 'Title 15',
+            'teacher15content' => 'Bio 15',
+
+            'teacher16image' => 'Image 16',
+            'teacher16name' => 'Name 16',
+            'teacher16meta' => 'Title 16',
+            'teacher16content' => 'Bio 16',
+
+            'teacher17image' => 'Image 17',
+            'teacher17name' => 'Name 17',
+            'teacher17meta' => 'Title 17',
+            'teacher17content' => 'Bio 17',
+
+            'teacher18image' => 'Image 18',
+            'teacher18name' => 'Name 18',
+            'teacher18meta' => 'Title 18',
+            'teacher18content' => 'Bio 18',
+
+            'teacher19image' => 'Image 19',
+            'teacher19name' => 'Name 19',
+            'teacher19meta' => 'Title 19',
+            'teacher19content' => 'Bio 19',
+
+            'teacher20image' => 'Image 20',
+            'teacher20name' => 'Name 20',
+            'teacher20meta' => 'Title 20',
+            'teacher20content' => 'Bio 20',
+        ],
+        'frontpagetestimonial' => [
+            'usetestimonials' => 'Enable testimonials',
+            'testimonialsectiontitle' => 'Testimonials section title',
+            'testimonialitemheight' => 'Testimonial item height',
+            'testimonialsbuttontext' => 'CTA button text',
+            'testimonialsbuttonurl' => 'CTA button link',
+            'testimonialsbuttonurlopennew' => 'Open link in a new window/tab',
+
+            'testimonial1image' => 'Image 1',
+            'testimonial1name' => 'Source name 1',
+            'testimonial1meta' => 'Source meta data 1',
+            'testimonial1content' => 'Testimonial quote 1',
+
+            'testimonial2image' => 'Image 2',
+            'testimonial2name' => 'Source name 2',
+            'testimonial2meta' => 'Source meta data 2',
+            'testimonial2content' => 'Testimonial quote 2',
+
+            'testimonial3image' => 'Image 3',
+            'testimonial3name' => 'Source name 3',
+            'testimonial3meta' => 'Source meta data 3',
+            'testimonial3content' => 'Testimonial quote 3',
+
+            'testimonial4image' => 'Image 4',
+            'testimonial4name' => 'Source name 4',
+            'testimonial4meta' => 'Source meta data 4',
+            'testimonial4content' => 'Testimonial quote 4',
+
+            'testimonial5image' => 'Image 5',
+            'testimonial5name' => 'Source name 5',
+            'testimonial5meta' => 'Source meta data 5',
+            'testimonial5content' => 'Testimonial quote 5',
+
+            'testimonial6image' => 'Image 6',
+            'testimonial6name' => 'Source name 6',
+            'testimonial6meta' => 'Source meta data 6',
+            'testimonial6content' => 'Testimonial quote 6',
+
+        ],
+        'frontpagefaq' => [
+            'usefaq' => 'Enable FAQ section',
+            'faqsectiontitle' => 'FAQ section title',
+
+            'faq1title' => 'Question 1',
+            'faq1content' => 'Answer 1',
+
+            'faq2title' => 'Question 2',
+            'faq2content' => 'Answer 2',
+
+            'faq3title' => 'Question 3',
+            'faq3content' => 'Answer 3',
+
+            'faq4title' => 'Question 4',
+            'faq4content' => 'Answer 4',
+
+            'faq5title' => 'Question 5',
+            'faq5content' => 'Answer 5',
+
+            'faq6title' => 'Question 6',
+            'faq6content' => 'Answer 6',
+
+            'faq7title' => 'Question 7',
+            'faq7content' => 'Answer 7',
+
+            'faq8title' => 'Question 8',
+            'faq8content' => 'Answer 8',
+
+            'faq9title' => 'Question 9',
+            'faq9content' => 'Answer 9',
+
+            'faq10title' => 'Question 10',
+            'faq10content' => 'Answer 10',
+
+            'faqsectionbuttontext' => 'CTA button text',
+            'faqsectionbuttonurl' => 'CTA Button link',
+            'faqsectionbuttonurlopennew' => 'Open link in a new window/tab',
+
+        ],
+        'frontpagectasection' => [
+            'usectsection' => 'Enable CTA section',
+            'ctasectiontitle' => 'CTA section title',
+            'ctasectioncontent' => 'CTA section content',
+            'ctasectionbuttontext' => 'CTA button text',
+            'ctasectionbuttonurl' => 'CTA Button link',
+            'ctasectionbuttonurlopennew' => 'Open link in a new window/tab',
+            'usectadatabox' => 'Enable Data Box',
+            'ctadataitem1title' => 'Data Box Item 1 Title',
+            'ctadataitem1meta' => 'Data Box Item 1 Description',
+            'ctadataitem2title' => 'Data Box Item 2 Title',
+            'ctadataitem2meta' => 'Data Box Item 2 Description',
+            'ctadataitem3title' => 'Data Box Item 3 Title',
+            'ctadataitem3meta' => 'Data Box Item 3 Description',
+            'ctadataitem4title' => 'Data Box Item 4 Title',
+            'ctadataitem4meta' => 'Data Box Item 4 Description',
+        ],
+        'coursesetting' => [
+            'coursedisplaystyle' => 'Course list layout style',
+            'usecoursesummarytrim' => 'Truncate the course summary',
+            'coursesummarylength' => 'Course summary max characters',
+            'defaultcourseimage' => 'Default course image',
+            'usecourseheaderimage' => 'Show course header image',
+            'courseheaderimageheight' => 'Header image height',
+        ],
+        'dropdownmenu' => [
+            'usedropdown' => 'Enable Dropdown Menu',
+            'dropdownname' => 'Dropdown Menu Name',
+            'dropdowncontentheading' => 'Dropdown Menu Content Heading',
+            'dropdowncolnumber' => 'Dropdown Menu Number of Columns',
+            'dropdownbuttontext' => 'CTA button text',
+            'dropdownbuttonurl' => 'CTA button link',
+            'dropdownbuttonurlopennew' => 'Open link in a new window/tab',
+            'dropdownitem1title' => 'Menu Item Text 1',
+            'dropdownitem1url' => 'Menu Item Link 1',
+            'dropdownitem1opennew' => 'Open link in a new window/tab 1',
+
+            'dropdownitem2title' => 'Menu Item Text 2',
+            'dropdownitem2url' => 'Menu Item Link 2',
+            'dropdownitem2opennew' => 'Open link in a new window/tab 2',
+
+            'dropdownitem3title' => 'Menu Item Text 3',
+            'dropdownitem3url' => 'Menu Item Link 3',
+            'dropdownitem3opennew' => 'Open link in a new window/tab 3',
+
+            'dropdownitem4title' => 'Menu Item Text 4',
+            'dropdownitem4url' => 'Menu Item Link 4',
+            'dropdownitem4opennew' => 'Open link in a new window/tab 4',
+
+            'dropdownitem5title' => 'Menu Item Text 5',
+            'dropdownitem5url' => 'Menu Item Link 5',
+            'dropdownitem5opennew' => 'Open link in a new window/tab 5',
+
+            'dropdownitem6title' => 'Menu Item Text 6',
+            'dropdownitem6url' => 'Menu Item Link 6',
+            'dropdownitem6opennew' => 'Open link in a new window/tab 6',
+
+            'dropdownitem7title' => 'Menu Item Text 7',
+            'dropdownitem7url' => 'Menu Item Link 7',
+            'dropdownitem7opennew' => 'Open link in a new window/tab 7',
+
+            'dropdownitem8title' => 'Menu Item Text 8',
+            'dropdownitem8url' => 'Menu Item Link 8',
+            'dropdownitem8opennew' => 'Open link in a new window/tab 8',
+
+            'dropdownitem9title' => 'Menu Item Text 9',
+            'dropdownitem9url' => 'Menu Item Link 9',
+            'dropdownitem9opennew' => 'Open link in a new window/tab 9',
+
+            'dropdownitem10title' => 'Menu Item Text 10',
+            'dropdownitem10url' => 'Menu Item Link 10',
+            'dropdownitem10opennew' => 'Open link in a new window/tab 10',
+
+            'dropdownitem11title' => 'Menu Item Text 11',
+            'dropdownitem11url' => 'Menu Item Link 11',
+            'dropdownitem11opennew' => 'Open link in a new window/tab 11',
+
+            'dropdownitem12title' => 'Menu Item Text 12',
+            'dropdownitem12url' => 'Menu Item Link 12',
+            'dropdownitem12opennew' => 'Open link in a new window/tab 12',
+
+            'dropdownitem13title' => 'Menu Item Text 13',
+            'dropdownitem13url' => 'Menu Item Link 13',
+            'dropdownitem13opennew' => 'Open link in a new window/tab 13',
+
+            'dropdownitem14title' => 'Menu Item Text 14',
+            'dropdownitem14url' => 'Menu Item Link 14',
+            'dropdownitem14opennew' => 'Open link in a new window/tab 14',
+
+            'dropdownitem15title' => 'Menu Item Text 15',
+            'dropdownitem15url' => 'Menu Item Link 15',
+            'dropdownitem15opennew' => 'Open link in a new window/tab 15',
+
+            'dropdownitem16title' => 'Menu Item Text 16',
+            'dropdownitem16url' => 'Menu Item Link 16',
+            'dropdownitem16opennew' => 'Open link in a new window/tab 16',
+
+            'dropdownitem17title' => 'Menu Item Text 17',
+            'dropdownitem17url' => 'Menu Item Link 17',
+            'dropdownitem17opennew' => 'Open link in a new window/tab 17',
+
+            'dropdownitem18title' => 'Menu Item Text 18',
+            'dropdownitem18url' => 'Menu Item Link 18',
+            'dropdownitem18opennew' => 'Open link in a new window/tab 18',
+
+            'dropdownitem19title' => 'Menu Item Text 19',
+            'dropdownitem19url' => 'Menu Item Link 19',
+            'dropdownitem19opennew' => 'Open link in a new window/tab 19',
+
+            'dropdownitem20title' => 'Menu Item Text 20',
+            'dropdownitem20url' => 'Menu Item Link 20',
+            'dropdownitem20opennew' => 'Open link in a new window/tab 20',
+
+            'dropdownitem21title' => 'Menu Item Text 21',
+            'dropdownitem21url' => 'Menu Item Link 21',
+            'dropdownitem21opennew' => 'Open link in a new window/tab 21',
+
+            'dropdownitem22title' => 'Menu Item Text 22',
+            'dropdownitem22url' => 'Menu Item Link 22',
+            'dropdownitem22opennew' => 'Open link in a new window/tab 22',
+
+            'dropdownitem23title' => 'Menu Item Text 23',
+            'dropdownitem23url' => 'Menu Item Link 23',
+            'dropdownitem23opennew' => 'Open link in a new window/tab 23',
+
+            'dropdownitem24title' => 'Menu Item Text 24',
+            'dropdownitem24url' => 'Menu Item Link 24',
+            'dropdownitem24opennew' => 'Open link in a new window/tab 24',
+
+            'dropdownitem25title' => 'Menu Item Text 25',
+            'dropdownitem25url' => 'Menu Item Link 25',
+            'dropdownitem25opennew' => 'Open link in a new window/tab 25',
+
+            'dropdownitem26title' => 'Menu Item Text 26',
+            'dropdownitem26url' => 'Menu Item Link 26',
+            'dropdownitem26opennew' => 'Open link in a new window/tab 26',
+
+            'dropdownitem27title' => 'Menu Item Text 27',
+            'dropdownitem27url' => 'Menu Item Link 27',
+            'dropdownitem27opennew' => 'Open link in a new window/tab 27',
+
+            'dropdownitem28title' => 'Menu Item Text 28',
+            'dropdownitem28url' => 'Menu Item Link 28',
+            'dropdownitem28opennew' => 'Open link in a new window/tab 28',
+
+            'dropdownitem29title' => 'Menu Item Text 29',
+            'dropdownitem29url' => 'Menu Item Link 29',
+            'dropdownitem29opennew' => 'Open link in a new window/tab 29',
+
+            'dropdownitem30title' => 'Menu Item Text 30',
+            'dropdownitem30url' => 'Menu Item Link 30',
+            'dropdownitem30opennew' => 'Open link in a new window/tab 30',
+
+            'dropdownitem31title' => 'Menu Item Text 31',
+            'dropdownitem31url' => 'Menu Item Link 31',
+            'dropdownitem31opennew' => 'Open link in a new window/tab 31',
+
+            'dropdownitem32title' => 'Menu Item Text 32',
+            'dropdownitem32url' => 'Menu Item Link 32',
+            'dropdownitem32opennew' => 'Open link in a new window/tab 32',
+
+            'dropdownitem33title' => 'Menu Item Text 33',
+            'dropdownitem33url' => 'Menu Item Link 33',
+            'dropdownitem33opennew' => 'Open link in a new window/tab 33',
+
+            'dropdownitem34title' => 'Menu Item Text 34',
+            'dropdownitem34url' => 'Menu Item Link 34',
+            'dropdownitem34opennew' => 'Open link in a new window/tab 34',
+
+            'dropdownitem35title' => 'Menu Item Text 35',
+            'dropdownitem35url' => 'Menu Item Link 35',
+            'dropdownitem35opennew' => 'Open link in a new window/tab 35',
+
+            'dropdownitem36title' => 'Menu Item Text 36',
+            'dropdownitem36url' => 'Menu Item Link 36',
+            'dropdownitem36opennew' => 'Open link in a new window/tab 36',
+
+            'dropdownitem37title' => 'Menu Item Text 37',
+            'dropdownitem37url' => 'Menu Item Link 37',
+            'dropdownitem37opennew' => 'Open link in a new window/tab 37',
+
+            'dropdownitem38title' => 'Menu Item Text 38',
+            'dropdownitem38url' => 'Menu Item Link 38',
+            'dropdownitem38opennew' => 'Open link in a new window/tab 38',
+
+            'dropdownitem39title' => 'Menu Item Text 39',
+            'dropdownitem39url' => 'Menu Item Link 39',
+            'dropdownitem39opennew' => 'Open link in a new window/tab 39',
+
+            'dropdownitem40title' => 'Menu Item Text 40',
+            'dropdownitem40url' => 'Menu Item Link 40',
+            'dropdownitem40opennew' => 'Open link in a new window/tab 40',
+        ],
+        'socialmedia' => [
+            'website' => 'Website URL',
+            'twitter' => 'Twitter URL',
+            'facebook' => 'Facebook URL',
+            'googleplus' => 'Google+ URL',
+            'linkedin' => 'LinkedIn URL',
+            'youtube' => 'Youtube URL',
+            'vimeo' => 'Vimeo URL',
+            'instagram' => 'Instagram URL',
+            'pinterest' => 'Pinterest URL',
+            'flckr' => 'Flickr URL',
+            'tumblr' => 'Tumblr URL',
+            'slideshare' => 'Slideshare URL',
+            'skype' => 'Skype Account',
+            'weibo' => 'Weibo Page',
+            'rss' => 'RSS Feed URL',
+            'social1' => 'Link Name 1',
+            'socialicon1' => 'Link Icon 1',
+            'social2' => 'Link Name 2',
+            'socialicon2' => 'Link Icon 2',
+            'social3' => 'Link Name 3',
+            'socialicon3' => 'Link Icon 3',
+        ],
+        'loginpage' => [
+            'loginbgimage' => 'Page background image',
+            'useloginbgmask' => 'Enable background image overlay',
+        ],
+        'advance' => [
+            'scsspre' => 'Raw initial SCSS',
+            'scss' => 'Raw SCSS',
+            'analyticsid' => 'Your Tracking ID',
+            'iphoneicon' => 'iPhone Icon',
+            'iphoneretinaicon' => 'iPhone Retina Icon',
+            'ipadicon' => 'iPad Icon',
+            'ipadretinaicon' => 'iPad Retina Icon',
+            'hasinternet' => 'Has Internet Connection',
+
+        ],
 
     ];
 
-    private $checkbox_settings = ['useheadersocial', 'useheroslideshow'];
+    private $checkbox_settings = ['useheadersocial', 'useheroslideshow', 'usealert']; // List of checkbox settings
+
+    private $color_picker_settings = ['brandcolorprimary', 'brandcolorsecondary'];
+    private $file_upload_settings = ['logo', 'backgroundimage'];
+    private $html_input_settings = ['customhtml', 'footerhtml']; // Settings that allow HTML input
+    private $dropdown_settings = [
+        'preset' => [
+            'default' => 'Default Theme',
+            'darkmode' => 'Dark Mode',
+            'lightmode' => 'Light Mode',
+        ],
+        'pagefont' => [
+            'arial' => 'Arial',
+            'verdana' => 'Verdana',
+            'helvetica' => 'Helvetica',
+        ],
+    ];
     public function get_settings($tab)
     {
         return isset($this->settings[$tab]) ? $this->settings[$tab] : [];
     }
+    public function is_file_upload($name)
+    {
+        return in_array($name, $this->file_upload_settings);
+    }
+    public function is_dropdown($name)
+    {
+        return array_key_exists($name, $this->dropdown_settings);
+    }
 
+    public function is_html_input($name)
+    {
+        return in_array($name, $this->html_input_settings);
+    }
+    public function get_dropdown_options($name)
+    {
+        return $this->dropdown_settings[$name] ?? [];
+    }
     public function is_checkbox($name)
     {
         return in_array($name, $this->checkbox_settings);
     }
-
+    public function is_color_picker($name)
+    {
+        return in_array($name, $this->color_picker_settings);
+    }
     public function get($tab, $name)
     {
         return get_config('theme_maker', $name);
@@ -386,24 +962,27 @@ class ThemeSettingsManager
 }
 
 $settingsManager = new ThemeSettingsManager();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && confirm_sesskey()) {
     foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
         if ($settingsManager->is_checkbox($name)) {
             $value = optional_param($name, null, PARAM_BOOL) ? 1 : 0;
+            $settingsManager->save($currenttab, $name, $value);
+        } elseif ($settingsManager->is_file_upload($name)) {
+            $draftitemid = file_get_submitted_draft_itemid($name);
+            file_prepare_draft_area($draftitemid, $context->id, 'local_theme_editor', $currenttab, 0, ['subdirs' => false]);
+
+            file_save_draft_area_files($draftitemid, $context->id, 'local_theme_editor', $currenttab, $name, ['subdirs' => false]);
+           $settingsManager->save($currenttab, $name, $draftitemid);
         } else {
             $value = optional_param($name, '', PARAM_TEXT);
+            $settingsManager->save($currenttab, $name, $value);
         }
-
-        $settingsManager->save($currenttab, $name, $value);
     }
-    \core\notification::add(get_string('contentsaved', 'local_theme_editor', $label), \core\output\notification::NOTIFY_SUCCESS);
+    \core\notification::add(get_string('contentsaved', 'local_theme_editor'), \core\output\notification::NOTIFY_SUCCESS);
     theme_reset_all_caches();
     \core\notification::add(get_string('cachepurged', 'local_theme_editor'), \core\output\notification::NOTIFY_INFO);
 }
-
-// Display the form for the current tab
-echo '<form method="post">';
+echo '<form method="post" enctype="multipart/form-data">'; // Add enctype for file uploads
 echo '<input type="hidden" name="sesskey" value="' . sesskey() . '">';
 
 foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
@@ -414,8 +993,34 @@ foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
         $checked = $value ? 'checked' : '';
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="checkbox" name="' . $name . '" id="' . $name . '" value="1" ' . $checked . '><br><br>';
+    } elseif ($settingsManager->is_color_picker($name)) {
+        // Render color picker for color settings
+        echo '<label for="' . $name . '">' . $label . '</label>';
+        echo '<input type="color" name="' . $name . '" id="' . $name . '" value="' . s($value) . '"><br><br>';
+    } elseif ($settingsManager->is_file_upload($name)) {
+        $draftitemid = file_get_submitted_draft_itemid($name);
+        file_prepare_draft_area($draftitemid, $context->id, 'local_theme_editor', $currenttab, $name, ['subdirs' => false]);
+
+        $filemanager_options = ['subdirs' => false];
+        echo '<label for="' . $name . '">' . $label . '</label>';
+        echo '<input type="file" name="' . $name . '" id="' . $name . '">';
+        echo '<input type="hidden" name="' . $name . '_draft" value="' . $draftitemid . '"><br><br>';
+    } elseif ($settingsManager->is_dropdown($name)) {
+        // Render dropdown for predefined options
+        $options = $settingsManager->get_dropdown_options($name);
+        echo '<label for="' . $name . '">' . $label . '</label>';
+        echo '<select name="' . $name . '" id="' . $name . '">';
+        foreach ($options as $optionValue => $optionLabel) {
+            $selected = ($value === $optionValue) ? 'selected' : '';
+            echo '<option value="' . $optionValue . '" ' . $selected . '>' . $optionLabel . '</option>';
+        }
+        echo '</select><br><br>';
+    } elseif ($settingsManager->is_html_input($name)) {
+        // Render HTML input (textarea) for fields that accept HTML content
+        echo '<label for="' . $name . '">' . $label . '</label>';
+        echo '<textarea name="' . $name . '" id="' . $name . '" rows="5" cols="50">' . s($value) . '</textarea><br><br>';
     } else {
-        // Render text input for other settings
+        // Render regular text input for other settings
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="text" name="' . $name . '" id="' . $name . '" value="' . s($value) . '"><br><br>';
     }
