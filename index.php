@@ -962,46 +962,94 @@ class ThemeSettingsManager
 }
 
 $settingsManager = new ThemeSettingsManager();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && confirm_sesskey()) {
-    foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
-        if ($settingsManager->is_checkbox($name)) {
-            $value = optional_param($name, null, PARAM_BOOL) ? 1 : 0;
-            $settingsManager->save($currenttab, $name, $value);
-        } elseif ($settingsManager->is_file_upload($name)) {
-            $draftitemid = file_get_submitted_draft_itemid($name);
-            file_prepare_draft_area($draftitemid, $context->id, 'local_theme_editor', $currenttab, 0, ['subdirs' => false]);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && confirm_sesskey())  {
 
-            file_save_draft_area_files($draftitemid, $context->id, 'local_theme_editor', $currenttab, $name, ['subdirs' => false]);
-           $settingsManager->save($currenttab, $name, $draftitemid);
-        } else {
-            $value = optional_param($name, '', PARAM_TEXT);
-            $settingsManager->save($currenttab, $name, $value);
+        foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
+            if ($settingsManager->is_checkbox($name)) {
+                $value = optional_param($name, null, PARAM_BOOL) ? 1 : 0;
+                $settingsManager->save($currenttab, $name, $value);
+            } elseif ($settingsManager->is_file_upload($name)) {
+                // Step 1: Check if a file was uploaded
+                if (isset($_FILES[$name]) && $_FILES[$name]['error'] === UPLOAD_ERR_OK) {
+                    // Step 2: Define the context, component, and file area for permanent storage
+                    $context = context_system::instance(); // Use system context (or another appropriate context)
+                    $component = 'theme_maker'; // Replace with your theme or plugin name
+                    $filearea = 'logo'; // File area name (e.g., 'logo', 'image')
+                    $itemid = 0; // Item ID (e.g., 0 for general use, or a specific ID like a post ID)
+            
+                    // Step 3: Validate file size and type
+                    $maxbytes = 1048576; // 1MB
+                    $acceptedtypes = ['.ico', '.png', '.jpg', 'jpeg']; // Accepted file types
+            
+                    if ($_FILES[$name]['size'] > $maxbytes) {
+                        throw new moodle_exception('filetoobig', 'theme_yourtheme');
+                    }
+            
+                    $fileext = strtolower(pathinfo($_FILES[$name]['name'], PATHINFO_EXTENSION));
+                    if (!in_array('.' . $fileext, $acceptedtypes)) {
+                        throw new moodle_exception('invalidfiletype', 'theme_yourtheme');
+                    }
+            
+                    // Step 4: Get Moodle's file storage API
+                    $fs = get_file_storage();
+            
+                    // Step 5: Delete existing files in the area (if any)
+                    $existingfiles = $fs->get_area_files($context->id, $component, $filearea, $itemid, 'id', false);
+                    if ($existingfiles) {
+                        foreach ($existingfiles as $existingfile) {
+                            $existingfile->delete();
+                        }
+                    }
+            
+                    // Step 6: Prepare the file record
+                    $fileinfo = [
+                        'contextid' => $context->id,
+                        'component' => $component,
+                        'filearea'  => $filearea,
+                        'itemid'    => $itemid,
+                        'filepath'  => '/', // File path within the file area
+                        'filename'  => clean_param($_FILES[$name]['name'], PARAM_FILE), // Sanitize the file name
+                    ];
+            
+                    // Step 7: Save the file
+                    $file = $fs->create_file_from_pathname($fileinfo, $_FILES[$name]['tmp_name']);
+            
+                    if ($file) {
+                        // Step 8: Save the file path in settings
+                        $filepath = $file->get_filepath() . $file->get_filename();
+                        $settingsManager->save($currenttab, $name, $filepath);
+                    } else {
+                        // Handle the case where the file could not be saved
+                        throw new moodle_exception('nofilesaved', 'theme_yourtheme');
+                    }
+                } else {
+                    // Handle the case where no file was uploaded or there was an upload error
+                    throw new moodle_exception('nouploadedfile', 'theme_yourtheme');
+                }
+            } else {
+                $value = optional_param($name, '', PARAM_TEXT);
+                $settingsManager->save($currenttab, $name, $value);
+            }
         }
-    }
+
     \core\notification::add(get_string('contentsaved', 'local_theme_editor'), \core\output\notification::NOTIFY_SUCCESS);
     theme_reset_all_caches();
     \core\notification::add(get_string('cachepurged', 'local_theme_editor'), \core\output\notification::NOTIFY_INFO);
 }
-echo '<form method="post" enctype="multipart/form-data">'; // Add enctype for file uploads
+echo '<form method="POST" enctype="multipart/form-data">';
 echo '<input type="hidden" name="sesskey" value="' . sesskey() . '">';
 
 foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
     $value = $settingsManager->get($currenttab, $name);
 
     if ($settingsManager->is_checkbox($name)) {
-        // Render checkbox for boolean settings
         $checked = $value ? 'checked' : '';
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="checkbox" name="' . $name . '" id="' . $name . '" value="1" ' . $checked . '><br><br>';
     } elseif ($settingsManager->is_color_picker($name)) {
-        // Render color picker for color settings
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="color" name="' . $name . '" id="' . $name . '" value="' . s($value) . '"><br><br>';
     } elseif ($settingsManager->is_file_upload($name)) {
-        $draftitemid = file_get_submitted_draft_itemid($name);
-        file_prepare_draft_area($draftitemid, $context->id, 'local_theme_editor', $currenttab, $name, ['subdirs' => false]);
-
-        $filemanager_options = ['subdirs' => false];
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="file" name="' . $name . '" id="' . $name . '">';
         echo '<input type="hidden" name="' . $name . '_draft" value="' . $draftitemid . '"><br><br>';
