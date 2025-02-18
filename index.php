@@ -903,11 +903,46 @@ class ThemeSettingsManager
         ],
 
     ];
-
-    private $checkbox_settings = ['useheadersocial', 'useheroslideshow', 'usealert']; // List of checkbox settings
-
-    private $color_picker_settings = ['brandcolorprimary', 'brandcolorsecondary'];
-    private $file_upload_settings = ['logo', 'backgroundimage'];
+    private $checkbox_settings = [
+        'usefontapi',
+        'useheadersocial',
+        'useheaderbranding',
+        'usealert',
+        'usefootersocial',
+        'usefooterblocks',
+        'usefooterwidget',
+        'useheroslideshow',
+        'usesearch',
+        'useherovideo',
+        'usebenefits',
+        'usebenefit1image',
+        'usebenefit2image',
+        'usebenefit3image',
+        'usebenefit4image',
+        'usebenefit5image',
+        'usebenefit6image',
+        'usehomeblocks',
+        'usepromocarousel',
+        'usecarouselitem1video',
+        'usecarouselitem2video',
+        'usecarouselitem3video',
+        'usecarouselitem4video',
+        'usecarouselitem5video',
+        'usecarouselitem6video',
+        'uselogos',
+        'usecategories',
+        'useteachers',
+        'usetestimonials',
+        'usefaq',
+        'usectsection',
+        'usectadatabox',
+        'usecoursesummarytrim',
+        'usecourseheaderimage',
+        'usedropdown',
+        'useloginbgmask'
+    ];
+    private $color_picker_settings = ['brandcolorprimary', 'brandcolorsecondary', 'alertbgcolor']; 
+    private $file_upload_settings = ['logo', 'teacher1image', 'teacher2image', 'teacher3image'];
     private $html_input_settings = ['customhtml', 'footerhtml']; // Settings that allow HTML input
     private $dropdown_settings = [
         'preset' => [
@@ -921,14 +956,17 @@ class ThemeSettingsManager
             'helvetica' => 'Helvetica',
         ],
     ];
+
     public function get_settings($tab)
     {
         return isset($this->settings[$tab]) ? $this->settings[$tab] : [];
     }
+
     public function is_file_upload($name)
     {
         return in_array($name, $this->file_upload_settings);
     }
+
     public function is_dropdown($name)
     {
         return array_key_exists($name, $this->dropdown_settings);
@@ -938,18 +976,22 @@ class ThemeSettingsManager
     {
         return in_array($name, $this->html_input_settings);
     }
+
     public function get_dropdown_options($name)
     {
         return $this->dropdown_settings[$name] ?? [];
     }
+
     public function is_checkbox($name)
     {
         return in_array($name, $this->checkbox_settings);
     }
+
     public function is_color_picker($name)
     {
         return in_array($name, $this->color_picker_settings);
     }
+
     public function get($tab, $name)
     {
         return get_config('theme_maker', $name);
@@ -962,80 +1004,82 @@ class ThemeSettingsManager
 }
 
 $settingsManager = new ThemeSettingsManager();
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && confirm_sesskey())  {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && confirm_sesskey()) {
+    foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
+        if ($settingsManager->is_checkbox($name)) {
+            $value = optional_param($name, null, PARAM_BOOL) ? 1 : 0;
+            $settingsManager->save($currenttab, $name, $value);
+        } elseif ($settingsManager->is_file_upload($name)) {
+            if (isset($_FILES[$name]) && $_FILES[$name]['error'] === UPLOAD_ERR_OK) {
+                // Step 2: Define the context, component, and file area for permanent storage
+                $context = context_system::instance(); // Use system context (or another appropriate context)
+                $component = 'theme_maker'; // Replace with your theme or plugin name
+                $filearea = match ($name) {
+                    'logo' => 'logo',
+                    'teacher1image' => 'teacher1image', 
+                    'teacher2image' => 'teacher2image', 
+                    'teacher3image' => 'teacher3image',
+                    default => 'uploads', // Fallback
+                };
+         $itemid = 0; // Item ID (e.g., 0 for general use, or a specific ID like a post ID)
 
-        foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
-            if ($settingsManager->is_checkbox($name)) {
-                $value = optional_param($name, null, PARAM_BOOL) ? 1 : 0;
-                $settingsManager->save($currenttab, $name, $value);
-            } elseif ($settingsManager->is_file_upload($name)) {
-                // Step 1: Check if a file was uploaded
-                if (isset($_FILES[$name]) && $_FILES[$name]['error'] === UPLOAD_ERR_OK) {
-                    // Step 2: Define the context, component, and file area for permanent storage
-                    $context = context_system::instance(); // Use system context (or another appropriate context)
-                    $component = 'theme_maker'; // Replace with your theme or plugin name
-                    $filearea = 'logo'; // File area name (e.g., 'logo', 'image')
-                    $itemid = 0; // Item ID (e.g., 0 for general use, or a specific ID like a post ID)
-            
-                    // Step 3: Validate file size and type
-                    $maxbytes = 1048576; // 1MB
-                    $acceptedtypes = ['.ico', '.png', '.jpg', 'jpeg']; // Accepted file types
-            
-                    if ($_FILES[$name]['size'] > $maxbytes) {
-                        throw new moodle_exception('filetoobig', 'theme_yourtheme');
-                    }
-            
-                    $fileext = strtolower(pathinfo($_FILES[$name]['name'], PATHINFO_EXTENSION));
-                    if (!in_array('.' . $fileext, $acceptedtypes)) {
-                        throw new moodle_exception('invalidfiletype', 'theme_yourtheme');
-                    }
-            
-                    // Step 4: Get Moodle's file storage API
-                    $fs = get_file_storage();
-            
-                    // Step 5: Delete existing files in the area (if any)
-                    $existingfiles = $fs->get_area_files($context->id, $component, $filearea, $itemid, 'id', false);
-                    if ($existingfiles) {
-                        foreach ($existingfiles as $existingfile) {
-                            $existingfile->delete();
-                        }
-                    }
-            
-                    // Step 6: Prepare the file record
-                    $fileinfo = [
-                        'contextid' => $context->id,
-                        'component' => $component,
-                        'filearea'  => $filearea,
-                        'itemid'    => $itemid,
-                        'filepath'  => '/', // File path within the file area
-                        'filename'  => clean_param($_FILES[$name]['name'], PARAM_FILE), // Sanitize the file name
-                    ];
-            
-                    // Step 7: Save the file
-                    $file = $fs->create_file_from_pathname($fileinfo, $_FILES[$name]['tmp_name']);
-            
-                    if ($file) {
-                        // Step 8: Save the file path in settings
-                        $filepath = $file->get_filepath() . $file->get_filename();
-                        $settingsManager->save($currenttab, $name, $filepath);
-                    } else {
-                        // Handle the case where the file could not be saved
-                        throw new moodle_exception('nofilesaved', 'theme_yourtheme');
-                    }
-                } else {
-                    // Handle the case where no file was uploaded or there was an upload error
-                    throw new moodle_exception('nouploadedfile', 'theme_yourtheme');
+                // Step 3: Validate file size and type
+                $maxbytes = 1048576; // 1MB
+                $acceptedtypes = ['.ico', '.png', '.jpg', 'jpeg']; // Accepted file types
+
+                if ($_FILES[$name]['size'] > $maxbytes) {
+                    throw new moodle_exception('filetoobig', 'theme_yourtheme');
                 }
-            } else {
-                $value = optional_param($name, '', PARAM_TEXT);
-                $settingsManager->save($currenttab, $name, $value);
+
+                $fileext = strtolower(pathinfo($_FILES[$name]['name'], PATHINFO_EXTENSION));
+                if (!in_array('.' . $fileext, $acceptedtypes)) {
+                    throw new moodle_exception('invalidfiletype', 'theme_yourtheme');
+                }
+
+                // Step 4: Get Moodle's file storage API
+                $fs = get_file_storage();
+
+                // Step 5: Delete existing files in the area (if any)
+                $existingfiles = $fs->get_area_files($context->id, $component, $filearea, $itemid, 'id', false);
+                if ($existingfiles) {
+                    foreach ($existingfiles as $existingfile) {
+                        $existingfile->delete();
+                    }
+                }
+
+                // Step 6: Prepare the file record
+                $fileinfo = [
+                    'contextid' => $context->id,
+                    'component' => $component,
+                    'filearea' => $filearea,
+                    'itemid' => $itemid,
+                    'filepath' => '/', // File path within the file area
+                    'filename' => clean_param($_FILES[$name]['name'], PARAM_FILE), // Sanitize the file name
+                ];
+
+                // Step 7: Save the file
+                $file = $fs->create_file_from_pathname($fileinfo, $_FILES[$name]['tmp_name']);
+
+                if ($file) {
+                    // Step 8: Save the file path in settings
+                    $filepath = $file->get_filepath() . $file->get_filename();
+                    $settingsManager->save($currenttab, $name, $filepath);
+                }
             }
+        } elseif ($settingsManager->is_color_picker($name)) {
+            $value = optional_param($name, '', PARAM_TEXT); // Save color picker value as text
+            $settingsManager->save($currenttab, $name, $value);
+        } else {
+            $value = optional_param($name, '', PARAM_TEXT);
+            $settingsManager->save($currenttab, $name, $value);
         }
+    }
 
     \core\notification::add(get_string('contentsaved', 'local_theme_editor'), \core\output\notification::NOTIFY_SUCCESS);
     theme_reset_all_caches();
     \core\notification::add(get_string('cachepurged', 'local_theme_editor'), \core\output\notification::NOTIFY_INFO);
 }
+
 echo '<form method="POST" enctype="multipart/form-data">';
 echo '<input type="hidden" name="sesskey" value="' . sesskey() . '">';
 
@@ -1054,7 +1098,6 @@ foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
         echo '<input type="file" name="' . $name . '" id="' . $name . '">';
         echo '<input type="hidden" name="' . $name . '_draft" value="' . $draftitemid . '"><br><br>';
     } elseif ($settingsManager->is_dropdown($name)) {
-        // Render dropdown for predefined options
         $options = $settingsManager->get_dropdown_options($name);
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<select name="' . $name . '" id="' . $name . '">';
@@ -1063,12 +1106,7 @@ foreach ($settingsManager->get_settings($currenttab) as $name => $label) {
             echo '<option value="' . $optionValue . '" ' . $selected . '>' . $optionLabel . '</option>';
         }
         echo '</select><br><br>';
-    } elseif ($settingsManager->is_html_input($name)) {
-        // Render HTML input (textarea) for fields that accept HTML content
-        echo '<label for="' . $name . '">' . $label . '</label>';
-        echo '<textarea name="' . $name . '" id="' . $name . '" rows="5" cols="50">' . s($value) . '</textarea><br><br>';
-    } else {
-        // Render regular text input for other settings
+    }  else {
         echo '<label for="' . $name . '">' . $label . '</label>';
         echo '<input type="text" name="' . $name . '" id="' . $name . '" value="' . s($value) . '"><br><br>';
     }
